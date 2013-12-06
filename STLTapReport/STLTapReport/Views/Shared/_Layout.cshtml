@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>STL Tap Report</title>
+    <link href="../Content/StyleSheet1.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="contentWrapper">
+        <div id="mainHeader">
+            <div id="headerText">
+                  <h1><strong>STL TAP REPORT</strong></h1>
+            </div>
+            <div id="login">
+                <ul>
+                    <li><img src="http://s3.amazonaws.com/btoimageupload/static/patio-guide/images/beer_medium.png" /></li>
+                    <li><h3>LOGIN</h3></li>
+                    <li><h3>|</h3></li>
+                    <li><h3>SIGN UP</h3></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div id="linkWrapper">
+            <div class="navLink" id="beerLink">
+                <h3><a href="/home/Beers">Beers</a></h3>
+            </div>
+            <div class="navLink" id="tapsLink">
+                <h3>Taps</h3>
+            </div>
+            <div class="navLink" id="styleLink">
+                <h3><a href="/home/Styles">Styles</a></h3>
+            </div>
+              <div id="beerSpotlight">
+            <h3>Today's Spotlight beer:</h3>
+            <h3>[Beer Name Here]</h3>
+        </div>
+        </div>
+
+        <div id="mainContent">
+            <!-- content management begins -->
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>
