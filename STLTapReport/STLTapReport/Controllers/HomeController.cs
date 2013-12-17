@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using STLTapReport.Models;
 
 namespace STLTapReport.Controllers
 {
@@ -11,14 +12,16 @@ namespace STLTapReport.Controllers
         //
         // GET: /STLTapReport/
 
-        public ActionResult Index()
+        public ActionResult Welcome()
         {
-            ViewBag.Message = "Hello World!";
             return View();
         }
 
         public ActionResult Beers()
         {
+            //LoginBoxModel model = new LoginBoxModel();
+            //model.LoggedIn = Session["logged_in"] == null ? false : (bool)Session["logged_in"];
+            //model.Name = model.LoggedIn ? (string)Session["name"] : "";
             return View();
         }
 

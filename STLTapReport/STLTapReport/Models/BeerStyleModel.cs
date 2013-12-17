@@ -5,8 +5,11 @@ using System.Web;
 
 namespace STLTapReport.Models
 {
-    public class BeerStyleModel
+    public class BeerModel
     {
-        public int ABV;
+        public string BeerName { get; set; }
+        public string BeerStyle { get; set; }
+        public string CountryOfOrigin { get; set; }
+        public int ABV { get; set; }
     }
 }

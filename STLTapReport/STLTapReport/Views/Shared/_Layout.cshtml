@@ -7,21 +7,27 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>STL Tap Report</title>
+    <title>@ViewBag.Title</title>
     <link href="../Content/StyleSheet1.css" rel="Stylesheet" type="text/css" />
 </head>
 <body>
     <div id="contentWrapper">
         <div id="mainHeader">
             <div id="headerText">
-                  <h1><strong>STL TAP REPORT</strong></h1>
+                  <a href="@Url.Action("Welcome", "Home")"><h1><strong>STL TAP REPORT</strong></h1></a>
             </div>
             <div id="login">
                 <ul>
-                    <li><img src="http://s3.amazonaws.com/btoimageupload/static/patio-guide/images/beer_medium.png" /></li>
-                    <li><h3>LOGIN</h3></li>
-                    <li><h3>|</h3></li>
-                    <li><h3>SIGN UP</h3></li>
+                    @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
+                    {
+                        <li><img height="60px" width="30px" src="http://s3.amazonaws.com/btoimageupload/static/patio-guide/images/beer_medium.png" /></li>
+                        <li><h3>Welcome back, @Session["name"]!</h3></li>
+                    }
+                    else
+                    {
+                        <li><img height="60px" width="35px" src="http://www.publicdomainfiles.com/images_view/2/13494514811992.png" /></li>
+                        <li><h3><a href="@Url.Action("Login", "Account")">LOGIN</a></h3></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -37,10 +43,10 @@
             <div class="navLink" id="styleLink">
                 <h3><a href="/home/Styles">Styles</a></h3>
             </div>
-              <div id="beerSpotlight">
+             <div id="beerSpotlight">
             <h3>Today's Spotlight beer:</h3>
-            <h3>[Beer Name Here]</h3>
-        </div>
+            @Html.Partial("_FeatureBeer")
+            </div>
         </div>
 
         <div id="mainContent">

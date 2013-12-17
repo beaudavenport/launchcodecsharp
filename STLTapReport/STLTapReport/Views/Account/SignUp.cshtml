@@ -1,0 +1,20 @@
+﻿@using STLTapReport.Models
+@model SignUpModel
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sign Up</h2>
+<p>It's free to join! Build a profile with your favorite beers and beer styles and
+share your own tap reports with other users.</p>
+@using(Html.BeginForm("SignUp", "Account"))
+    {
+    @Html.ValidationSummary()
+    <span>First Name: </span> @Html.TextBoxFor(m => m.FirstName) @Html.ValidationMessageFor(m => m.FirstName) <br />
+    <span>Last Name: </span> @Html.TextBoxFor(m => m.LastName) @Html.ValidationMessageFor(m => m.LastName) <br />
+    <span>Email: </span> @Html.TextBoxFor(m => m.Email) @Html.ValidationMessageFor(m => m.Email) <br />
+    <span>Password: </span> @Html.PasswordFor(m => m.Password) @Html.ValidationMessageFor(m => m.Password) <br />
+    <input type="submit" value="Sign Up" />
+    }

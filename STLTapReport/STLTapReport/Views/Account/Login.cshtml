@@ -1,0 +1,18 @@
+﻿@using STLTapReport.Models;
+@model LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+<div>
+    @using (Html.BeginForm("Login", "Account"))
+    {
+        @Html.ValidationSummary();
+        @Html.TextBoxFor(m => m.UserName); <br />
+        @Html.TextBoxFor(m => m.Password); <br />
+        <input type="submit" value="Login" />
+    }
+</div>
+<h3>Don't have an account? <a href="@Url.Action("SignUp", "Account")">Sign up for free!</a></h3>
