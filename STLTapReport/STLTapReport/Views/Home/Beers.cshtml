@@ -2,18 +2,11 @@
     ViewBag.Title = "Beers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using STLTapReport.data
+@model beerList
 
 <h2>Beers</h2>
-<h3>Stouts:</h3>
-<ul>
-    <li>Guinness Draught</li>
-    <li>Guinness Extra Stout</li>
-    <li>Old Rasputin Imperial Stout</li>
-    <li>Left Hand Milk Stout</li>
-</ul>
-<h3>Lagers:</h3>
-<ul>
-    <li>Schlafly Pilsner</li>
-    <li>Budweiser</li>
-    <li>Weihenstephaner</li>
-</ul>
+<h3>The first beer in the database is:@Model.name</h3>
+<h3>Description: @Model.description</h3>
+<h3>ABV: @Model.abv %</h3>
+

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using STLTapReport.Models;
+using STLTapReport.data;
 
 namespace STLTapReport.Controllers
 {
@@ -22,7 +23,9 @@ namespace STLTapReport.Controllers
             //LoginBoxModel model = new LoginBoxModel();
             //model.LoggedIn = Session["logged_in"] == null ? false : (bool)Session["logged_in"];
             //model.Name = model.LoggedIn ? (string)Session["name"] : "";
-            return View();
+            STLTapReportEntities context = new STLTapReportEntities();
+            var model = context.beerLists.First();
+            return View(model);
         }
 
         public ActionResult Styles()
