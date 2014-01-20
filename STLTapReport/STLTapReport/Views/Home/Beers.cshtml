@@ -3,10 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using STLTapReport.data
-@model beerList
+@model STLTapReport.data.beer
 
 <h2>Beers</h2>
 <h3>The first beer in the database is:@Model.name</h3>
 <h3>Description: @Model.description</h3>
 <h3>ABV: @Model.abv %</h3>
+<h3>Style: @Model.style.name</h3>
 

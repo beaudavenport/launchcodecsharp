@@ -12,20 +12,20 @@ namespace STLTapReport.data
     using System;
     using System.Collections.Generic;
     
-    public partial class style
+    public partial class beer
     {
-        public style()
+        public beer()
         {
-            this.beers = new HashSet<beer>();
             this.users = new HashSet<user>();
         }
     
-        public int styleID { get; set; }
+        public int beerID { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string origin { get; set; }
+        public double abv { get; set; }
+        public int styleID { get; set; }
     
-        public virtual ICollection<beer> beers { get; set; }
+        public virtual style style { get; set; }
         public virtual ICollection<user> users { get; set; }
     }
 }

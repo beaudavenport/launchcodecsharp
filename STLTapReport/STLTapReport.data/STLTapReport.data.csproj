@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A330C795-C3A1-45DC-9E09-86BB2487C444}</ProjectGuid>
+    <ProjectGuid>{65E1893B-DDB4-4709-B531-EB5EEDD9AFDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>STLTapReport.data</RootNamespace>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +29,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -51,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="beerList.cs">
+    <Compile Include="beer.cs">
       <DependentUpon>STLTapReport.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +69,9 @@
       <DependentUpon>STLTapReport.edmx</DependentUpon>
     </Compile>
     <Compile Include="style.cs">
+      <DependentUpon>STLTapReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user.cs">
       <DependentUpon>STLTapReport.tt</DependentUpon>
     </Compile>
   </ItemGroup>

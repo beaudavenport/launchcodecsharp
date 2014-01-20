@@ -4,56 +4,210 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="STLTapReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="beerList">
+    <Schema Namespace="STLTapReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="beers">
           <Key>
-            <PropertyRef Name="name_id" />
+            <PropertyRef Name="beerID" />
           </Key>
-          <Property Name="name_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="beerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="abv" Type="float" Nullable="false" />
-          <Property Name="style_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="styleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="styles">
           <Key>
-            <PropertyRef Name="style_id" />
+            <PropertyRef Name="styleID" />
           </Key>
-          <Property Name="style_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="styleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="origin" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="user_beersJT">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="beerID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="beerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_stylesJT">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="styleID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="styleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_beers_styleID">
+          <End Role="styles" Type="Self.styles" Multiplicity="1" />
+          <End Role="beers" Type="Self.beers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="styles">
+              <PropertyRef Name="styleID" />
+            </Principal>
+            <Dependent Role="beers">
+              <PropertyRef Name="styleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_beersJT_beerID">
+          <End Role="beers" Type="Self.beers" Multiplicity="1" />
+          <End Role="user_beersJT" Type="Self.user_beersJT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="beers">
+              <PropertyRef Name="beerID" />
+            </Principal>
+            <Dependent Role="user_beersJT">
+              <PropertyRef Name="beerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_beersJT_userID">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="user_beersJT" Type="Self.user_beersJT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="user_beersJT">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_stylesJT_styleID">
+          <End Role="styles" Type="Self.styles" Multiplicity="1" />
+          <End Role="user_stylesJT" Type="Self.user_stylesJT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="styles">
+              <PropertyRef Name="styleID" />
+            </Principal>
+            <Dependent Role="user_stylesJT">
+              <PropertyRef Name="styleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_stylesJT_userID">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="user_stylesJT" Type="Self.user_stylesJT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="user_stylesJT">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="STLTapReportModelStoreContainer">
-          <EntitySet Name="beerList" EntityType="Self.beerList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="beers" EntityType="Self.beers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="styles" EntityType="Self.styles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_beersJT" EntityType="Self.user_beersJT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_stylesJT" EntityType="Self.user_stylesJT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_beers_styleID" Association="Self.FK_beers_styleID">
+            <End Role="styles" EntitySet="styles" />
+            <End Role="beers" EntitySet="beers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_beersJT_beerID" Association="Self.FK_user_beersJT_beerID">
+            <End Role="beers" EntitySet="beers" />
+            <End Role="user_beersJT" EntitySet="user_beersJT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_beersJT_userID" Association="Self.FK_user_beersJT_userID">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_beersJT" EntitySet="user_beersJT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_stylesJT_styleID" Association="Self.FK_user_stylesJT_styleID">
+            <End Role="styles" EntitySet="styles" />
+            <End Role="user_stylesJT" EntitySet="user_stylesJT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_stylesJT_userID" Association="Self.FK_user_stylesJT_userID">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_stylesJT" EntitySet="user_stylesJT" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="STLTapReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="style">
+        <EntityType Name="beer">
           <Key>
-            <PropertyRef Name="style_id" />
+            <PropertyRef Name="beerID" />
           </Key>
-          <Property Name="style_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="beerList">
-          <Key>
-            <PropertyRef Name="name_id" />
-          </Key>
-          <Property Name="name_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="beerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="abv" Type="Double" Nullable="false" />
-          <Property Name="style_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="styleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="style" Relationship="Self.FK_beers_styleID" FromRole="beers" ToRole="styles" />
+          <NavigationProperty Name="users" Relationship="Self.user_beersJT" FromRole="beers" ToRole="users" />
         </EntityType>
+        <EntityType Name="style">
+          <Key>
+            <PropertyRef Name="styleID" />
+          </Key>
+          <Property Name="styleID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="beers" Relationship="Self.FK_beers_styleID" FromRole="styles" ToRole="beers" />
+          <NavigationProperty Name="users" Relationship="Self.user_stylesJT" FromRole="styles" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="beers" Relationship="Self.user_beersJT" FromRole="users" ToRole="beers" />
+          <NavigationProperty Name="styles" Relationship="Self.user_stylesJT" FromRole="users" ToRole="styles" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_beers_styleID">
+          <End Role="styles" Type="Self.style" Multiplicity="1" />
+          <End Role="beers" Type="Self.beer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="styles">
+              <PropertyRef Name="styleID" />
+            </Principal>
+            <Dependent Role="beers">
+              <PropertyRef Name="styleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_beersJT">
+          <End Role="beers" Type="Self.beer" Multiplicity="*" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+        </Association>
+        <Association Name="user_stylesJT">
+          <End Role="styles" Type="Self.style" Multiplicity="*" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="STLTapReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="beers" EntityType="Self.beer" />
           <EntitySet Name="styles" EntityType="Self.style" />
-          <EntitySet Name="beerLists" EntityType="Self.beerList" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_beers_styleID" Association="Self.FK_beers_styleID">
+            <End Role="styles" EntitySet="styles" />
+            <End Role="beers" EntitySet="beers" />
+          </AssociationSet>
+          <AssociationSet Name="user_beersJT" Association="Self.user_beersJT">
+            <End Role="beers" EntitySet="beers" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="user_stylesJT" Association="Self.user_stylesJT">
+            <End Role="styles" EntitySet="styles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -61,27 +215,52 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="STLTapReportModelStoreContainer" CdmEntityContainer="STLTapReportEntities">
+          <EntitySetMapping Name="beers">
+            <EntityTypeMapping TypeName="STLTapReportModel.beer">
+              <MappingFragment StoreEntitySet="beers">
+                <ScalarProperty Name="beerID" ColumnName="beerID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="abv" ColumnName="abv" />
+                <ScalarProperty Name="styleID" ColumnName="styleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="styles">
             <EntityTypeMapping TypeName="STLTapReportModel.style">
               <MappingFragment StoreEntitySet="styles">
-                <ScalarProperty Name="style_id" ColumnName="style_id" />
+                <ScalarProperty Name="styleID" ColumnName="styleID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="origin" ColumnName="origin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="beerLists">
-            <EntityTypeMapping TypeName="STLTapReportModel.beerList">
-              <MappingFragment StoreEntitySet="beerList">
-                <ScalarProperty Name="name_id" ColumnName="name_id" />
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="STLTapReportModel.user">
+              <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="abv" ColumnName="abv" />
-                <ScalarProperty Name="style_id" ColumnName="style_id" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="user_beersJT" TypeName="STLTapReportModel.user_beersJT" StoreEntitySet="user_beersJT">
+            <EndProperty Name="beers">
+              <ScalarProperty Name="beerID" ColumnName="beerID" />
+            </EndProperty>
+            <EndProperty Name="users">
+              <ScalarProperty Name="userID" ColumnName="userID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_stylesJT" TypeName="STLTapReportModel.user_stylesJT" StoreEntitySet="user_stylesJT">
+            <EndProperty Name="styles">
+              <ScalarProperty Name="styleID" ColumnName="styleID" />
+            </EndProperty>
+            <EndProperty Name="users">
+              <ScalarProperty Name="userID" ColumnName="userID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -98,7 +277,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

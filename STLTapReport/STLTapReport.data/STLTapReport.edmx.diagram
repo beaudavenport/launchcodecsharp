@@ -4,9 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="44a7a264ba8d41f6958163d1930a3525" Name="Diagram1">
-        <EntityTypeShape EntityType="STLTapReportModel.style" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="STLTapReportModel.beerList" Width="1.5" PointX="2.875" PointY="0.625" IsExpanded="true" />
+      <Diagram DiagramId="05133bc131904160a2cd258edbe90335" Name="Diagram1">
+        <EntityTypeShape EntityType="STLTapReportModel.beer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="STLTapReportModel.style" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="STLTapReportModel.user" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="STLTapReportModel.FK_beers_styleID" ManuallyRouted="false" />
+        <AssociationConnector Association="STLTapReportModel.user_beersJT" ManuallyRouted="false" />
+        <AssociationConnector Association="STLTapReportModel.user_stylesJT" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

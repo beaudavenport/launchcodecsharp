@@ -24,7 +24,7 @@ namespace STLTapReport.Controllers
             //model.LoggedIn = Session["logged_in"] == null ? false : (bool)Session["logged_in"];
             //model.Name = model.LoggedIn ? (string)Session["name"] : "";
             STLTapReportEntities context = new STLTapReportEntities();
-            var model = context.beerLists.First();
+            var model = context.beers.First();
             return View(model);
         }
 

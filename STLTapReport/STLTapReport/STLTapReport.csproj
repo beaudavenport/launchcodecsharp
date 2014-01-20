@@ -170,7 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\STLTapReport.data\STLTapReport.data.csproj">
-      <Project>{a330c795-c3a1-45dc-9e09-86bb2487c444}</Project>
+      <Project>{65e1893b-ddb4-4709-b531-eb5eedd9afdf}</Project>
       <Name>STLTapReport.data</Name>
     </ProjectReference>
   </ItemGroup>
