@@ -1,5 +1,5 @@
-﻿@using STLTapReport.Models
-@model SignUpModel
+﻿@using STLTapReport.data
+@model STLTapReport.data.user
 
 @{
     ViewBag.Title = "SignUp";
@@ -12,9 +12,8 @@ share your own tap reports with other users.</p>
 @using(Html.BeginForm("SignUp", "Account"))
     {
     @Html.ValidationSummary()
-    <span>First Name: </span> @Html.TextBoxFor(m => m.FirstName) @Html.ValidationMessageFor(m => m.FirstName) <br />
-    <span>Last Name: </span> @Html.TextBoxFor(m => m.LastName) @Html.ValidationMessageFor(m => m.LastName) <br />
-    <span>Email: </span> @Html.TextBoxFor(m => m.Email) @Html.ValidationMessageFor(m => m.Email) <br />
-    <span>Password: </span> @Html.PasswordFor(m => m.Password) @Html.ValidationMessageFor(m => m.Password) <br />
+    <span>Name: </span> @Html.TextBoxFor(m => m.name) @Html.ValidationMessageFor(m => m.name) <br />
+    <span>Email: </span> @Html.TextBoxFor(m => m.email) @Html.ValidationMessageFor(m => m.email) <br />
+    <span>Password: </span> @Html.PasswordFor(m => m.password) @Html.ValidationMessageFor(m => m.password) <br />
     <input type="submit" value="Sign Up" />
     }

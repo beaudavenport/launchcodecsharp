@@ -1,0 +1,21 @@
+﻿@using STLTapReport.data;
+@using STLTapReport.Models;
+@model BeerAddModel
+
+@{
+    ViewBag.Title = "AddBeer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddBeer</h2>
+<h3>To add a beer to the database, fill out the following forms and submit.</h3>
+@using (Html.BeginForm("AddBeer", "Admin"))
+{
+    @Html.ValidationSummary();
+    <span>Beer name: </span> @Html.TextBoxFor(m => m.name) @Html.ValidationMessageFor(m => m.name) <br />
+    <span>Description: </span> @Html.TextAreaFor(m => m.description) @Html.ValidationMessageFor(m => m.description) <br />
+    <span>ABV: </span> @Html.TextBoxFor(m => m.abv) @Html.ValidationMessageFor(m => m.abv) <br />
+    <span>BeerAdvocate Link: </span> @Html.TextBoxFor(m => m.beeradvocatelink) <br />
+    <span>Choose a Style: </span> @Html.DropDownListFor(m => m.styleID, Model.stylelist) <br />
+    <input type="submit" value="Add to Beers" />
+}

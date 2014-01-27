@@ -13,6 +13,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="abv" Type="float" Nullable="false" />
+          <Property Name="beeradvocatelink" Type="nvarchar(max)" />
           <Property Name="styleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="styles">
@@ -23,6 +24,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="origin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="image" />
         </EntityType>
         <EntityType Name="user_beersJT">
           <Key>
@@ -47,6 +49,9 @@
           <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isAdmin" Type="bit" Nullable="false" />
+          <Property Name="favStyle" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_beers_styleID">
           <End Role="styles" Type="Self.styles" Multiplicity="1" />
@@ -150,6 +155,7 @@
           <Property Name="styleID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="style" Relationship="Self.FK_beers_styleID" FromRole="beers" ToRole="styles" />
           <NavigationProperty Name="users" Relationship="Self.user_beersJT" FromRole="beers" ToRole="users" />
+          <Property Name="beeradvocatelink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="style">
           <Key>
@@ -161,6 +167,7 @@
           <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="beers" Relationship="Self.FK_beers_styleID" FromRole="styles" ToRole="beers" />
           <NavigationProperty Name="users" Relationship="Self.user_stylesJT" FromRole="styles" ToRole="users" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -171,6 +178,9 @@
           <NavigationProperty Name="beers" Relationship="Self.user_beersJT" FromRole="users" ToRole="beers" />
           <NavigationProperty Name="styles" Relationship="Self.user_stylesJT" FromRole="users" ToRole="styles" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="favStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_beers_styleID">
           <End Role="styles" Type="Self.style" Multiplicity="1" />
@@ -218,6 +228,7 @@
           <EntitySetMapping Name="beers">
             <EntityTypeMapping TypeName="STLTapReportModel.beer">
               <MappingFragment StoreEntitySet="beers">
+                <ScalarProperty Name="beeradvocatelink" ColumnName="beeradvocatelink" />
                 <ScalarProperty Name="beerID" ColumnName="beerID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -229,6 +240,7 @@
           <EntitySetMapping Name="styles">
             <EntityTypeMapping TypeName="STLTapReportModel.style">
               <MappingFragment StoreEntitySet="styles">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="styleID" ColumnName="styleID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -239,6 +251,9 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="STLTapReportModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="favStyle" ColumnName="favStyle" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="password" ColumnName="password" />

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using STLTapReport.data;
 
 namespace STLTapReport.Models
 {
-    public class BeerStyleModel
+    public class BeerToRemove
+
     {
-        public List<style> styles { get; set; }
+        public string BeerName { get; set; }
+        public bool IsChecked { get; set; }
     }
 }

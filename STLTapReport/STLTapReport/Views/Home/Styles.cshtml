@@ -1,8 +1,15 @@
-﻿@{
+﻿@using STLTapReport.data;
+@using STLTapReport.Models;
+@model BeerStyleModel
+@{
     ViewBag.Title = "Styles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<h2>Beer Styles:</h2>
-
+<h2>Beer Styles</h2>
+<h3>Explore beer styles and find the styles you like best!</h3>
+@foreach (style style in Model.styles)
+{
+    <h3>@style.name</h3>
+}

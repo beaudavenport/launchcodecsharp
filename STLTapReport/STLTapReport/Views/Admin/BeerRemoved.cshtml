@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "BeerRemoved";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Beer Removed Successfully</h2>
+
+<a href="@Url.Action("RemoveBeer", "Admin")">Remove another beer</a><br />
+<a href="@Url.Action("AddBeer", "Admin")">Add a beer</a>

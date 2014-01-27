@@ -24,6 +24,7 @@ namespace STLTapReport.data
         public string name { get; set; }
         public string description { get; set; }
         public string origin { get; set; }
+        public byte[] image { get; set; }
     
         public virtual ICollection<beer> beers { get; set; }
         public virtual ICollection<user> users { get; set; }

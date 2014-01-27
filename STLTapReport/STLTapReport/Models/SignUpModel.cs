@@ -12,16 +12,13 @@ namespace STLTapReport.Models
     public class SignUpModel
     {
         [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
+        public string name { get; set; }
         
         [MyEmailAddress]
-        public string Email { get; set; }
+        public string email { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string password { get; set; }
    
     }
 }

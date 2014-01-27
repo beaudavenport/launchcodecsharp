@@ -74,6 +74,8 @@
     <Compile Include="user.cs">
       <DependentUpon>STLTapReport.tt</DependentUpon>
     </Compile>
+    <Compile Include="ValidationModels\beer.cs" />
+    <Compile Include="ValidationModels\user.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="STLTapReport.edmx">

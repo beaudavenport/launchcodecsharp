@@ -1,0 +1,24 @@
+﻿@using STLTapReport.data;
+@using STLTapReport.Models;
+@model BeerRemoveModel
+
+@{
+    ViewBag.Title = "RemoveBeer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RemoveBeer</h2>
+<h3>Select beers to remove.</h3>
+@using (Html.BeginForm("RemoveBeer", "Admin"))
+{
+    
+    @Html.ValidationSummary();
+    for (var i = 0; i < Model.BeersToRemove.Count; i++)
+    {
+        @Html.Label(Model.BeersToRemove[i].BeerName)
+        @Html.CheckBoxFor(m => Model.BeersToRemove[i].IsChecked) 
+        @Html.HiddenFor(m => Model.BeersToRemove[i].BeerName) <br />
+    }
+
+    <input type="submit" value="Delete Selected" />
+}

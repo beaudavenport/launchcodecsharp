@@ -22,6 +22,7 @@
                     {
                         <li><img height="60px" width="30px" src="http://s3.amazonaws.com/btoimageupload/static/patio-guide/images/beer_medium.png" /></li>
                         <li><h3>Welcome back, @Session["name"]!</h3></li>
+                        <li><a href="@Url.Action("Login", "Account")">[logout]</a></li>
                     }
                     else
                     {
@@ -34,19 +35,28 @@
 
         <!-- Navigation Bar -->
         <div id="linkWrapper">
-            <div class="navLink" id="beerLink">
-                <h3><a href="/home/Beers">Beers</a></h3>
+
+            <div class="navLink" id="welcomeLink">
+                @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
+                {
+                    <h3><a href="@Url.Action("UserPage", "Account")">My Account</a></h3>
+                }
+                else
+                {
+                    <h3><a href="@Url.Action("Welcome", "Home")">Welcome</a></h3>
+                }
             </div>
-            <div class="navLink" id="tapsLink">
-                <h3>Taps</h3>
+            <div class="navLink" id="beerLink">
+                <h3><a href="@Url.Action("Beers", "Home")">Beers</a></h3>
             </div>
             <div class="navLink" id="styleLink">
-                <h3><a href="/home/Styles">Styles</a></h3>
+                <h3><a href="@Url.Action("Styles", "Home")">Styles</a></h3>
             </div>
              <div id="beerSpotlight">
             <h3>Today's Spotlight beer:</h3>
             @Html.Partial("_FeatureBeer")
             </div>
+
         </div>
 
         <div id="mainContent">

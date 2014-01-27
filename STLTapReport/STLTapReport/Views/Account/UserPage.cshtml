@@ -1,0 +1,19 @@
+﻿@model STLTapReport.data.user
+@{
+    ViewBag.Title = "UserPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Account</h2>
+<h3>Thank you for making an account!</h3>
+<h3>Your user name: @Model.name</h3>
+<h3>Your email: @Model.email</h3>
+@switch(Model.isAdmin)
+{
+    case (true): <h2>ADMIN</h2>;
+    <a href="@Url.Action("AdminWelcome", "Admin")">Administrator Controls</a>;
+    break;
+    case (false): <h2>NOT ADMIN</h2>;
+    break;
+}
+<h3>Now you can explore STL Tap Report and find beers and styles you like and where to get a pint!</h3>

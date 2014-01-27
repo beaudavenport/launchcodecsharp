@@ -20,9 +20,6 @@ namespace STLTapReport.Controllers
 
         public ActionResult Beers()
         {
-            //LoginBoxModel model = new LoginBoxModel();
-            //model.LoggedIn = Session["logged_in"] == null ? false : (bool)Session["logged_in"];
-            //model.Name = model.LoggedIn ? (string)Session["name"] : "";
             STLTapReportEntities context = new STLTapReportEntities();
             var model = context.beers.First();
             return View(model);
@@ -30,7 +27,10 @@ namespace STLTapReport.Controllers
 
         public ActionResult Styles()
         {
-            return View();
+            BeerStyleModel model = new BeerStyleModel();
+            STLTapReportEntities context = new STLTapReportEntities();
+            model.styles = context.styles.ToList();
+            return View(model);
         }
     }
 }

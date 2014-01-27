@@ -6,8 +6,10 @@ using STLTapReport.data;
 
 namespace STLTapReport.Models
 {
-    public class BeerStyleModel
+    public class BeerRemoveModel
     {
-        public List<style> styles { get; set; }
+
+        public List<BeerToRemove> BeersToRemove { get; set; }
+
     }
 }

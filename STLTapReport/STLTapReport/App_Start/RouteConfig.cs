@@ -17,7 +17,12 @@ namespace STLTapReport
                 url: "account/{action}/",
                 defaults: new { controller = "Account", action = "SignUp" }
             );
-            
+
+            routes.MapRoute(
+                name: "AdminRoute",
+                url: "admin/{action}/",
+                defaults: new { controller = "Admin", action = "AdminWelcome" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{action}/",

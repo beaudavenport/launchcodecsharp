@@ -115,11 +115,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BeerAddModel.cs" />
+    <Compile Include="Models\BeerRemoveModel.cs" />
     <Compile Include="Models\BeerStyleModel.cs" />
+    <Compile Include="Models\BeerToRemove.cs" />
     <Compile Include="Models\EmailAddress.cs" />
     <Compile Include="Models\LoginBoxModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -173,6 +177,24 @@
       <Project>{65e1893b-ddb4-4709-b531-eb5eedd9afdf}</Project>
       <Name>STLTapReport.data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\UserPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddBeer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\RemoveBeer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AdminWelcome.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\BeerAdded.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\BeerRemoved.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
