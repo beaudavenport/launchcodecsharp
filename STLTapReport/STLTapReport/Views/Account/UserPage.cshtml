@@ -1,13 +1,19 @@
-﻿@model STLTapReport.data.user
+﻿@using STLTapReport.data;
+@model STLTapReport.data.user
 @{
     ViewBag.Title = "UserPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>My Account</h2>
-<h3>Thank you for making an account!</h3>
 <h3>Your user name: @Model.name</h3>
 <h3>Your email: @Model.email</h3>
+<h3>Your favorite beers:</h3>
+@foreach (beer m in Model.beers)
+{
+    <h3>@m.name</h3>
+}
+
 @switch(Model.isAdmin)
 {
     case (true): <h2>ADMIN</h2>;

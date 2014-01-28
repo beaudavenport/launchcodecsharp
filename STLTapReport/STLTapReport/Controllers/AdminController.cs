@@ -77,11 +77,13 @@ namespace STLTapReport.Controllers
            
             var NamesOfBeers = context.beers.Select(x => x.name).ToList();
             
-            //Initiliaze checkbox to unchecked
+            // Initiliaze checkbox to unchecked
             bool temp = false;
             model.BeersToRemove = new List<BeerToRemove>();
 
-            //Assign name of each beer to an object of type BeerToRemove(); which has only BeerName and IsChecked (false by default)
+            // Assign name of each beer to an object of type BeerToRemove() 
+            // which has only BeerName and IsChecked (false by default) properties, view doesn't need entire beer model
+
             foreach (string i in NamesOfBeers)
             {
                 BeerToRemove thisbeer = new BeerToRemove();

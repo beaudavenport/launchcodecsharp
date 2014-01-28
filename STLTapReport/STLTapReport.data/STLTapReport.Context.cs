@@ -29,4 +29,5 @@ namespace STLTapReport.data
         public DbSet<style> styles { get; set; }
         public DbSet<user> users { get; set; }
     }
+
 }

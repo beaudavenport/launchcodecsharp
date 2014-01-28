@@ -2,12 +2,12 @@
     ViewBag.Title = "Beers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using STLTapReport.data
-@model STLTapReport.data.beer
+@using STLTapReport.data;
+@using STLTapReport.Models;
+@model BeersModel
 
 <h2>Beers</h2>
-<h3>The first beer in the database is:@Model.name</h3>
-<h3>Description: @Model.description</h3>
-<h3>ABV: @Model.abv %</h3>
-<h3>Style: @Model.style.name</h3>
-
+@foreach (beer m in Model.beers)
+{ 
+    <h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = m.beerID })">@m.name</a></h3>
+}

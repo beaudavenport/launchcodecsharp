@@ -1,0 +1,22 @@
+﻿@using STLTapReport.data;
+@model STLTapReport.data.beer
+
+@{
+    ViewBag.Title = "BeerProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BeerProfile</h2>
+
+<h3>@Model.name</h3>
+<h3>@Model.description</h3>
+<h3>ABV: @Model.abv %</h3>
+<h3>Beer Advocate Link: <a href="@Model.beeradvocatelink">@Model.name</a></h3>
+<h3>Style: @Model.style.name</h3>
+@using (Html.BeginForm("BeerProfile", "Home"))
+{
+    @Html.HiddenFor(m => Model.beerID);
+
+    <input type="submit" value="Add to Favorites" />
+}
+<h3></h3>
