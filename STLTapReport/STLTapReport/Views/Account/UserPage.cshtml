@@ -11,9 +11,14 @@
 <h3>Your favorite beers:</h3>
 @foreach (beer m in Model.beers)
 {
-    <h3>@m.name</h3>
+    <h3>@m.name<span><a href="@Url.Action("RemoveUserItem", new { itemID = m.beerID, itemType = "beer" })">(remove)</a></span></h3>
 }
 
+<h3>Your favorite styles:</h3>
+@foreach (style x in Model.styles)
+{
+    <h3>@x.name<span><a href="@Url.Action("RemoveUserItem", new { itemID = x.styleID, itemType = "style" })">(remove)</a></span></h3>
+}
 @switch(Model.isAdmin)
 {
     case (true): <h2>ADMIN</h2>;

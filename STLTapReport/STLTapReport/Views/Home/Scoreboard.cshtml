@@ -1,0 +1,23 @@
+﻿@using STLTapReport.Models;
+@model ScoreboardModel
+
+@{
+    ViewBag.Title = "Scoreboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Scoreboard</h2>
+
+<h3>Top ranking beers</h3>
+<ul>
+    <li>In first place: @Model.FirstBeer with @Model.FirstBCount users!</li>
+    <li>In second place: @Model.SecondBeer with @Model.SecondBCount users!</li>
+    <li>In third place: @Model.ThirdBeer with @Model.ThirdBCount users!</li>
+</ul>
+
+<h3>Top ranking styles</h3>
+<ul>
+    <li>In first place: @Model.FirstStyle with @Model.FirstSCount users!</li>
+    <li>In second place: @Model.SecondStyle with @Model.SecondSCount users!</li>
+    <li>In third place: @Model.ThirdStyle with @Model.ThirdSCount users!</li>
+</ul>

@@ -5,14 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
-<div>
+<div class="bodyHead">
+    <h1>Login</h1>
+</div>
+
+<div id="loginView">
+
+    <div id="loginViewForm">
     @using (Html.BeginForm("Login", "Account"))
     {
         @Html.ValidationSummary();
-        @Html.TextBoxFor(m => m.UserName); <br />
-        @Html.TextBoxFor(m => m.Password); <br />
-        <input type="submit" value="Login" />
+        <span>User name: </span>@Html.TextBoxFor(m => m.UserName); <br /><br />
+        <span>Password: </span>@Html.PasswordFor(m => m.Password); <br /><br />
     }
+    </div>
+    <div id="loginViewSubmit">
+        <input type="submit" value="Login" id="loginSubmit" /><br />
+    </div>
 </div>
 <h3>Don't have an account? <a href="@Url.Action("SignUp", "Account")">Sign up for free!</a></h3>

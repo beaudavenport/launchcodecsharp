@@ -3,7 +3,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Welcome to STL Tap Report, an online database of local beers and beers styles in the St. Louis area.</h2>
-<p>Explore local beers, learn about different styles of beer and some local examples, or create an account and choose
-your favorite beers. See what styles and beers are the most popular on the STL Tap Report scoreboard!</p>
+<div class="bodyHead">
+    <h1>Welcome</h1>
+</div>
+<div class="viewImage">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Groene_bel_1908_afbeelding.jpg/355px-Groene_bel_1908_afbeelding.jpg">
+</div>
+<div class="viewContent">
+    <h2>Welcome to STL Tap Report, an online database of local beers and beers styles in the St. Louis area.</h2>
+    <p>Explore the Beers or Styles page for a detailed list of local beers and styles, complete with detailed profiles for each.
+    For an even more fun experience, create an account and choose your favorite beers and styles. You can view the most popular 
+    on the STL Tap Report scoreboard!</p>
+    <br />
+    <br />
+    <h3><a href="@Url.Action("SignUp", "Account")">Click here to get signed up!</a></h3>
+</div>
+<div class="viewFooter">
+    <p> &#8598 Follow the links on the left to see a list of Beers and Styles, or check the scoreboard to see the most popular
+    beers and styles!</p>
+    <p> &#8592 The "Beer Portal" displays a randomly-generated beer from the database everytime the page reloads or you navigate
+        to a new page. If you see a beer that looks good, follow the link at the bottom!</p>
+</div>
 

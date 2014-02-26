@@ -1,0 +1,9 @@
+﻿@using STLTapReport.data;
+@model STLTapReport.data.beer
+
+<div id="beerSpotlightImg">
+    <img height="220px" width="120px" src="@Model.imageurl" alt="(No image available)" />
+</div>
+<h2>@Model.name</h2>
+<h4>@Model.users.Count() users added this to their favorites.</h4>
+<h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = Model.beerID })">[Visit Profile Page]</a></h3>

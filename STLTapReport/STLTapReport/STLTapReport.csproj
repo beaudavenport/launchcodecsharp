@@ -128,6 +128,7 @@
     <Compile Include="Models\EmailAddress.cs" />
     <Compile Include="Models\LoginBoxModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ScoreboardModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -135,6 +136,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Images\Local_Texture__Three_by_One_by_Beyond_Oddities.jpg" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -171,7 +173,7 @@
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_FeatureBeer.cshtml" />
+    <Content Include="Views\Home\_FeatureBeer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\STLTapReport.data\STLTapReport.data.csproj">
@@ -201,7 +203,10 @@
     <Content Include="Views\Home\BeerProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\AddToBeers.cshtml" />
+    <Content Include="Views\Home\StyleProfile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Scoreboard.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,10 +4,15 @@
 }
 @using STLTapReport.data;
 @using STLTapReport.Models;
-@model BeersModel
+@model BeerStyleModel
 
 <h2>Beers</h2>
-@foreach (beer m in Model.beers)
-{ 
-    <h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = m.beerID })">@m.name</a></h3>
+<h3>Explore beers and pick up to 3 favorites!</h3>
+@foreach (style m in Model.styles)
+{
+    <h2>@m.name</h2>
+    foreach (beer x in m.beers.ToList())
+    {    
+    <h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = x.beerID })">@x.name</a></h3>
+    }
 }

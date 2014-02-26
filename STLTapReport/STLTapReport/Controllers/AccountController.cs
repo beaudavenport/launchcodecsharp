@@ -32,6 +32,11 @@ namespace STLTapReport.Controllers
                 model.password = model.password.GetHashCode().ToString();
                 context.users.Add(model);
                 context.SaveChanges();
+
+                //Log user in after creating account
+                Session["logged_in"] = true;
+                Session["name"] = model.name;
+                Session["UserID"] = model.userID;
                 return View("UserPage", model);
             }
         }
@@ -70,6 +75,7 @@ namespace STLTapReport.Controllers
                 Session["logged_in"] = true;
                 Session["name"] = model.UserName;
                 Session["UserID"] = user.userID;
+
                 if (user.isAdmin)
                 {
                     Session["is_Admin"] = true;
@@ -87,6 +93,41 @@ namespace STLTapReport.Controllers
             string name = (string)Session["name"];
             model = context.users.Where(u => u.name == name).SingleOrDefault();
             return View(model);
+        }
+
+        public ActionResult RemoveUserItem(int itemID, string itemType)
+        {
+            STLTapReportEntities context = new STLTapReportEntities();
+            string name = (string)Session["name"];
+            user thisuser = context.users.Where(u => u.name == name).SingleOrDefault();
+
+            if (itemType == "style")   // if item to remove is a style
+            {
+                // Get selected style from styles in user's list, remove, and save changes
+                context.users.Attach(thisuser);
+                var user = context.Entry(thisuser);
+                style thisstyle = thisuser.styles.Where(x => x.styleID == itemID).SingleOrDefault();
+                user.Collection(m => m.styles).CurrentValue.Remove(thisstyle);
+                context.Entry(thisuser).State = System.Data.Entity.EntityState.Unchanged;
+                context.SaveChanges();
+                return RedirectToAction("UserPage", "Account");
+            }
+            else if (itemType == "beer")    // if item to remove is a beer
+            {
+                // Get selected beer from beers in user's list, remove, and save changes
+                context.users.Attach(thisuser);
+                var user = context.Entry(thisuser);
+                beer thisbeer = thisuser.beers.Where(x => x.beerID == itemID).SingleOrDefault();
+                user.Collection(m => m.beers).CurrentValue.Remove(thisbeer);
+                context.Entry(thisuser).State = System.Data.Entity.EntityState.Unchanged;
+                context.SaveChanges();
+                return RedirectToAction("UserPage", "Account");
+            }
+            else       // if error (i.e., involving query string)
+            {
+                return RedirectToAction("Welcome", "Home");
+            }
+
         }
 
     }

@@ -8,8 +8,8 @@
 
 
 <h2>Beer Styles</h2>
-<h3>Explore beer styles and find the styles you like best!</h3>
-@foreach (style style in Model.styles)
+<h3>Explore beer styles and pick up to 3 favorites!</h3>
+@foreach (style m in Model.styles)
 {
-    <h3>@style.name</h3>
+    <div><a href="@Url.Action("StyleProfile", new { StyleProfileId = m.styleID })">@m.name</a></div>
 }

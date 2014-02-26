@@ -24,6 +24,5 @@ namespace STLTapReport.data
         [Required]
         public double abv { get; set; }
 
-        public string beeradvocatelink { get; set; }
     }
 }

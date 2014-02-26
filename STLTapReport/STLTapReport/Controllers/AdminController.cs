@@ -42,14 +42,15 @@ namespace STLTapReport.Controllers
             if ((Session["is_Admin"] == null) || (!(bool)Session["is_Admin"]))
                 return RedirectToAction("Welcome", "Home");
 
+            STLTapReportEntities context = new STLTapReportEntities();
+            model.stylelist = new SelectList(context.styles.Select(x => new { x.name, x.styleID }), "styleID", "name");
+            
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             else
             {
-                STLTapReportEntities context = new STLTapReportEntities();
-                model.stylelist = new SelectList(context.styles.Select(x => new { x.name, x.styleID }), "styleID", "name");
 
                 //Collect data from view model and add to a model of type beer that can be used to update the database
                 var updatemodel = new beer();
@@ -57,8 +58,9 @@ namespace STLTapReport.Controllers
                 updatemodel.name = model.name;
                 updatemodel.description = model.description;
                 updatemodel.abv = model.abv;
-                updatemodel.beeradvocatelink = model.beeradvocatelink;
+                updatemodel.brewerylink = model.brewerylink;
                 updatemodel.styleID = model.styleID;
+                updatemodel.imageurl = model.imageurl;
                 context.beers.Add(updatemodel);
                 context.SaveChanges();
 
@@ -119,6 +121,20 @@ namespace STLTapReport.Controllers
                     {
                         string temp = model.BeersToRemove[i].BeerName;
                         beer beerToDrop = context.beers.Where(x => x.name == temp).SingleOrDefault();
+                        
+                        // make beerToDrop open to change
+                        context.beers.Attach(beerToDrop);
+                        var dbBeer = context.Entry(beerToDrop);
+
+                        // strip beerToDrop of all associated users (i.e., junction table entry)
+                        foreach (user m in beerToDrop.users.ToList())
+                        {
+                            dbBeer.Collection(y => y.users).CurrentValue.Remove(m);
+                        }
+
+                        context.Entry(beerToDrop).State = System.Data.Entity.EntityState.Unchanged;
+
+                        // once user associations are removed, delete beer
                         context.beers.Remove(beerToDrop);
                     }
                 }

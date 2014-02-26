@@ -12,30 +12,41 @@
 </head>
 <body>
     <div id="contentWrapper">
-        <div id="mainHeader">
+        <div id="headerTextWrap">
             <div id="headerText">
-                  <a href="@Url.Action("Welcome", "Home")"><h1><strong>STL TAP REPORT</strong></h1></a>
-            </div>
-            <div id="login">
-                <ul>
-                    @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
-                    {
-                        <li><img height="60px" width="30px" src="http://s3.amazonaws.com/btoimageupload/static/patio-guide/images/beer_medium.png" /></li>
-                        <li><h3>Welcome back, @Session["name"]!</h3></li>
-                        <li><a href="@Url.Action("Login", "Account")">[logout]</a></li>
-                    }
-                    else
-                    {
-                        <li><img height="60px" width="35px" src="http://www.publicdomainfiles.com/images_view/2/13494514811992.png" /></li>
-                        <li><h3><a href="@Url.Action("Login", "Account")">LOGIN</a></h3></li>
-                    }
-                </ul>
+                <a href="@Url.Action("Welcome", "Home")"><h1>STL Tap Report</h1></a>
+                <p>A guide to St. Louis area craft beer</p>
             </div>
         </div>
 
+
         <!-- Navigation Bar -->
         <div id="linkWrapper">
-
+            <div id="loginBox">
+                <div id="login">
+                    @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
+                    {
+                        <div class="loginImg">
+                            <img height="50px" width="25px" src="http://openclipart.org/image/300px/svg_to_png/181588/Fwd:%20Pint%20of%20Beer%20for%20Beijing%20Cream.png" />
+                        </div>
+                        <div class="loginName">
+                            <h4>
+                                Welcome back, @Session["name"]!<br />
+                                <a href="@Url.Action("Login", "Account")">[logout]</a>
+                            </h4>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="loginImg">
+                            <img height="50px" width="25px" src="http://openclipart.org/image/300px/svg_to_png/181588/Fwd:%20Pint%20of%20Beer%20for%20Beijing%20Cream.png" />
+                         </div>
+                        <div class="loginName">
+                            <h2><a href="@Url.Action("Login", "Account")">LOGIN</a></h2>
+                        </div>
+                    }
+                </div>
+            </div>
             <div class="navLink" id="welcomeLink">
                 @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
                 {
@@ -52,16 +63,23 @@
             <div class="navLink" id="styleLink">
                 <h3><a href="@Url.Action("Styles", "Home")">Styles</a></h3>
             </div>
-             <div id="beerSpotlight">
-            <h3>Today's Spotlight beer:</h3>
-            @Html.Partial("_FeatureBeer")
+            <div class="navLink" id="scoreLink">
+                <h3><a href="@Url.Action("Scoreboard", "Home")">Scoreboard</a></h3>
+            </div>
+            <div id="beerSpotlight">
+                <div id="beerSpotlightHead">
+                    <h3>Beer Portal</h3>
+                </div>
+                <div id="beerSpotlightView">
+                    @{Html.RenderAction("_FeatureBeer", "Home");}
+                </div>
             </div>
 
         </div>
 
         <div id="mainContent">
             <!-- content management begins -->
-            <div>
+            <div id="renderBody">
                 @RenderBody()
             </div>
         </div>

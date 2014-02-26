@@ -8,15 +8,23 @@
 
 <h2>BeerProfile</h2>
 
+<a href="@Model.brewerylink"><img width="100px" height="auto" src="@Model.imageurl" alt="(No image available)" /></a>
 <h3>@Model.name</h3>
 <h3>@Model.description</h3>
 <h3>ABV: @Model.abv %</h3>
-<h3>Beer Advocate Link: <a href="@Model.beeradvocatelink">@Model.name</a></h3>
+<h3>Brewery website link: <a href="@Model.brewerylink">@Model.name</a></h3>
 <h3>Style: @Model.style.name</h3>
-@using (Html.BeginForm("BeerProfile", "Home"))
-{
-    @Html.HiddenFor(m => Model.beerID);
 
+@if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
+{
+  using (Html.BeginForm("BeerProfile", "Home"))
+    {
+    @Html.HiddenFor(m => Model.beerID);
     <input type="submit" value="Add to Favorites" />
+    }  
+}
+else
+{
+    <p><a href="@Url.Action("SignUp", "Account")">Sign up</a> to start choosing your favorite beers!</p>
 }
 <h3></h3>

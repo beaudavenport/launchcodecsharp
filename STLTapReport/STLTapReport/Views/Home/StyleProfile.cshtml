@@ -1,0 +1,26 @@
+﻿@using STLTapReport.data;
+@model STLTapReport.data.style
+
+@{
+    ViewBag.Title = "StyleProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StyleProfile</h2>
+
+<h3>@Model.name</h3>
+<h3>@Model.description</h3>
+<h3>Country of Origin: @Model.origin</h3>
+
+@if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
+{
+    using (Html.BeginForm("StyleProfile", "Home"))
+    {
+        @Html.HiddenFor(m => Model.styleID);
+        <input type="submit" value="Add to favorite styles" />
+    }  
+}
+else
+{
+    <p><a href="@Url.Action("SignUp", "Account")">Sign up</a> to start choosing your favorite styles!</p>
+}

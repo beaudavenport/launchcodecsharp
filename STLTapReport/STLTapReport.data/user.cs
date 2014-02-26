@@ -25,7 +25,6 @@ namespace STLTapReport.data
         public string name { get; set; }
         public string email { get; set; }
         public bool isAdmin { get; set; }
-        public string favStyle { get; set; }
     
         public virtual ICollection<beer> beers { get; set; }
         public virtual ICollection<style> styles { get; set; }
