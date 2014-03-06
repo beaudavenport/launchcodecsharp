@@ -8,6 +8,7 @@ namespace STLTapReport.Models
     public class ScoreboardModel
     {
         public string FirstBeer { get; set; }
+        public string FirstBeerPic { get; set; }
         public int FirstBCount { get; set; }
         public string SecondBeer { get; set; }
         public int SecondBCount { get; set; }
@@ -15,6 +16,7 @@ namespace STLTapReport.Models
         public int ThirdBCount { get; set; }
 
         public string FirstStyle { get; set; }
+        public string FirstStylePic { get; set; }
         public int FirstSCount { get; set; }
         public string SecondStyle { get; set; }
         public int SecondSCount { get; set; }

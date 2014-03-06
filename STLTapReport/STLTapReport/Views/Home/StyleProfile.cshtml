@@ -5,22 +5,52 @@
     ViewBag.Title = "StyleProfile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="bodyHead">
+    <h1>Style Profile</h1>
+</div>
+<div class="bodyWrapper">
+    <div id="styleProfileContent">
+        <h2 class="styleTitle">@Model.name</h2>
+        <p>&#8594 @Model.description</p>
+        <h3><span class="grayItal">Country of Origin: </span>@Model.origin</h3>
 
-<h2>StyleProfile</h2>
-
-<h3>@Model.name</h3>
-<h3>@Model.description</h3>
-<h3>Country of Origin: @Model.origin</h3>
-
-@if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
-{
-    using (Html.BeginForm("StyleProfile", "Home"))
-    {
-        @Html.HiddenFor(m => Model.styleID);
-        <input type="submit" value="Add to favorite styles" />
-    }  
-}
-else
-{
-    <p><a href="@Url.Action("SignUp", "Account")">Sign up</a> to start choosing your favorite styles!</p>
-}
+        @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
+        {
+            using (Html.BeginForm("StyleProfile", "Home"))
+            {
+                @Html.HiddenFor(m => Model.styleID);
+            <input class="center" type="submit" value="Add to favorite styles" />
+            }
+        }
+        else
+        {
+            <a class="linkSpan" href="@Url.Action("SignUp", "Account")">Sign up </a><span class="grayItal">to start choosing your favorite styles!</span>
+        }
+    </div>
+    <div id="styleProfileExample">
+        <h4>An example of @Model.name:</h4>
+        @if (Model.beers.Count > 0) /* make sure an example of the style exists */
+        {
+            <div id="styleProfileExampleImage">
+                <img src="@Model.beers.First().imageurl" alt="(No image available)" />
+            </div>
+            <h2 class="beerTitle">@Model.beers.First().name</h2> 
+            <h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = Model.beers.First().beerID })">[Visit Profile Page]</a></h3>
+        }
+        else
+        {
+            <div id="styleProfileExampleImage">
+                <p>(No image available)</p>
+            </div>
+            <h3>(No beers of this style have been added to the database...)</h3>
+        }
+    </div>
+</div>
+<div class="viewFooter">
+    <h4>
+        <a title="By edwin [CC-BY-2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AFounders_Curmudgeon_(Old_Ale).jpg">
+            <img width="45" alt="Founders Curmudgeon (Old Ale)" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Founders_Curmudgeon_%28Old_Ale%29.jpg/256px-Founders_Curmudgeon_%28Old_Ale%29.jpg" />
+        </a>
+        Traditional beers from cultures around the world use a wide variety of grains in addition to barley, including millet, sorghum and corn.
+    </h4>
+</div>

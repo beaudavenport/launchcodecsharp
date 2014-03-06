@@ -49,7 +49,6 @@
           <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_beers_styleID">
@@ -177,7 +176,6 @@
           <NavigationProperty Name="beers" Relationship="Self.user_beersJT" FromRole="users" ToRole="beers" />
           <NavigationProperty Name="styles" Relationship="Self.user_stylesJT" FromRole="users" ToRole="styles" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_beers_styleID">
@@ -250,7 +248,6 @@
             <EntityTypeMapping TypeName="STLTapReportModel.user">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
-                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="password" ColumnName="password" />

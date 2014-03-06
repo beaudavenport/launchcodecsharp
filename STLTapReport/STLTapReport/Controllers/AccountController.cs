@@ -20,24 +20,43 @@ namespace STLTapReport.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(user model)
+        public ActionResult SignUp(SignUpModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+            else if (model.HumanVal != "Yes, I'm human")
+            {
+                ModelState.AddModelError("", "You failed the human test. Please try again.");
+                return View(model);
+            }
             else
             {
                 STLTapReportEntities context = new STLTapReportEntities();
+                //hash password before proceeding
                 model.password = model.password.GetHashCode().ToString();
-                context.users.Add(model);
+
+                //check for duplicate users
+                user DuplicateUser = context.users.Where(u => u.name == model.name).SingleOrDefault();
+                if (DuplicateUser != null)
+                {
+                    ModelState.AddModelError("", "That user name already exists. Please choose another.");
+                    return View(model);
+                }
+
+                //fill in values for new user and add to database
+                user NewUser = new user();
+                NewUser.name = model.name;
+                NewUser.password = model.password;
+                context.users.Add(NewUser);
                 context.SaveChanges();
 
                 //Log user in after creating account
                 Session["logged_in"] = true;
-                Session["name"] = model.name;
-                Session["UserID"] = model.userID;
-                return View("UserPage", model);
+                Session["name"] = NewUser.name;
+                Session["UserID"] = NewUser.userID;
+                return View("UserPage", NewUser);
             }
         }
 
@@ -56,7 +75,7 @@ namespace STLTapReport.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(user model)
         {
  
             if (!ModelState.IsValid)
@@ -66,14 +85,15 @@ namespace STLTapReport.Controllers
             else
             {
                 STLTapReportEntities context = new STLTapReportEntities();
-                string hashedPassword = model.Password.GetHashCode().ToString();
-                user user = context.users.Where(u => u.name == model.UserName && u.password == hashedPassword).SingleOrDefault();
+                string hashedPassword = model.password.GetHashCode().ToString();
+                user user = context.users.Where(u => u.name == model.name && u.password == hashedPassword).SingleOrDefault();
                 if (user == null)
                 {
+                    ModelState.AddModelError("", "Your username or password are incorrect. Please try again.");
                     return View(model);
                 }
                 Session["logged_in"] = true;
-                Session["name"] = model.UserName;
+                Session["name"] = model.name;
                 Session["UserID"] = user.userID;
 
                 if (user.isAdmin)

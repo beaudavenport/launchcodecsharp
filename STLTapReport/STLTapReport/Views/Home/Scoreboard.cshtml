@@ -6,18 +6,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Scoreboard</h2>
-
-<h3>Top ranking beers</h3>
-<ul>
-    <li>In first place: @Model.FirstBeer with @Model.FirstBCount users!</li>
-    <li>In second place: @Model.SecondBeer with @Model.SecondBCount users!</li>
-    <li>In third place: @Model.ThirdBeer with @Model.ThirdBCount users!</li>
-</ul>
-
-<h3>Top ranking styles</h3>
-<ul>
-    <li>In first place: @Model.FirstStyle with @Model.FirstSCount users!</li>
-    <li>In second place: @Model.SecondStyle with @Model.SecondSCount users!</li>
-    <li>In third place: @Model.ThirdStyle with @Model.ThirdSCount users!</li>
-</ul>
+<div class="bodyHead">
+    <h1>Scoreboard</h1>
+</div>
+<div class="bodyWrapper">
+    <div id="topBeersContent">
+        <h3 class="beerTitle">Top ranking beers:</h3>
+        <div class="firstPlace">
+            <div class="firstPlaceImage">
+                <img src="@Model.FirstBeerPic" alt="(No image available)" />
+            </div>
+            <h2>@Model.FirstBeer</h2>
+            <h4>First place with @Model.FirstBCount users!</h4>
+        </div>
+        <div class="secondPlace">
+            <h3>@Model.SecondBeer</h3>
+            <h5>Second place with @Model.SecondBCount users!</h5>
+        </div>
+        <div class="thirdPlace">
+            <h4>@Model.ThirdBeer</h4>
+            <h6>Third place with @Model.ThirdBCount users!</h6>
+        </div>
+    </div>
+    <div id="topStylesContent">
+        <h3 class="styleTitle">Top ranking styles:</h3>
+        <div class="firstPlace">
+            <div class="firstPlaceImage">
+                <img src="@Model.FirstStylePic" alt="(No image available)" />
+            </div>
+            <h2>@Model.FirstStyle</h2>
+            <h4>First place with @Model.FirstSCount users!</h4>
+        </div>
+        <div class="secondPlace">
+            <h3>@Model.SecondStyle</h3>
+            <h5>Second place with @Model.SecondSCount users!</h5>
+        </div>
+        <div class="thirdPlace">
+            <h4>@Model.ThirdStyle</h4>
+            <h6>Third place with @Model.ThirdSCount users!</h6>
+        </div>
+    </div>
+</div>
+<div class="viewFooter">
+    <h4>
+        <a title="By edwin [CC-BY-2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AFounders_Curmudgeon_(Old_Ale).jpg">
+            <img width="45" alt="Founders Curmudgeon (Old Ale)" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Founders_Curmudgeon_%28Old_Ale%29.jpg/256px-Founders_Curmudgeon_%28Old_Ale%29.jpg" />
+        </a>
+        The Czech Republic consumes the most beer of any country in the world, with an average per capita consumption of 132 liters (that's 372 12-oz bottles.)
+    </h4>
+</div>

@@ -7,18 +7,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RemoveBeer</h2>
-<h3>Select beers to remove.</h3>
-@using (Html.BeginForm("RemoveBeer", "Admin"))
-{
-    
-    @Html.ValidationSummary();
-    for (var i = 0; i < Model.BeersToRemove.Count; i++)
+<div class="bodyHead">
+    <h1>RemoveBeer</h1>
+</div>
+<h3 class="beerTitle">Select beers to remove.</h3>
+<div class="signUpView">
+    @using (Html.BeginForm("RemoveBeer", "Admin"))
     {
-        @Html.Label(Model.BeersToRemove[i].BeerName)
-        @Html.CheckBoxFor(m => Model.BeersToRemove[i].IsChecked) 
-        @Html.HiddenFor(m => Model.BeersToRemove[i].BeerName) <br />
+        @Html.ValidationSummary();
+        for (var i = 0; i < Model.BeersToRemove.Count; i++)
+        {
+            @Html.Label(Model.BeersToRemove[i].BeerName)
+            @Html.CheckBoxFor(m => Model.BeersToRemove[i].IsChecked)
+            @Html.HiddenFor(m => Model.BeersToRemove[i].BeerName) <br />
+        }
+        <br />
+        <input type="submit" value="Delete Selected" />
     }
-
-    <input type="submit" value="Delete Selected" />
-}
+</div>

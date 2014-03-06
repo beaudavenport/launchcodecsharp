@@ -1,5 +1,5 @@
-﻿@using STLTapReport.Models;
-@model LoginModel
+﻿@using STLTapReport.data;
+@model STLTapReport.data.user
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,19 +8,23 @@
 <div class="bodyHead">
     <h1>Login</h1>
 </div>
-
-<div id="loginView">
-
-    <div id="loginViewForm">
-    @using (Html.BeginForm("Login", "Account"))
-    {
-        @Html.ValidationSummary();
-        <span>User name: </span>@Html.TextBoxFor(m => m.UserName); <br /><br />
-        <span>Password: </span>@Html.PasswordFor(m => m.Password); <br /><br />
-    }
+<div class="bodyWrapper">
+    <div id="loginView">
+        @using (Html.BeginForm("Login", "Account"))
+        {
+            <span class="validation">@Html.ValidationSummary()</span>
+            <span>User name: </span>@Html.TextBoxFor(m => m.name);<br /><br />
+            <span>Password: </span>@Html.PasswordFor(m => m.password);<br /><br />
+            <input type="submit" value="Login" /><br />
+        }
     </div>
-    <div id="loginViewSubmit">
-        <input type="submit" value="Login" id="loginSubmit" /><br />
+    <div id="loginMessage">
+        <h3 class="grayItal">Don't have an account? <a href="@Url.Action("SignUp", "Account")"><span>Sign up for free!</span></a></h3>
     </div>
 </div>
-<h3>Don't have an account? <a href="@Url.Action("SignUp", "Account")">Sign up for free!</a></h3>
+<div class="viewFooter">
+    <h4><a title="By edwin [CC-BY-2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AFounders_Curmudgeon_(Old_Ale).jpg">
+        <img width="45" alt="Founders Curmudgeon (Old Ale)" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Founders_Curmudgeon_%28Old_Ale%29.jpg/256px-Founders_Curmudgeon_%28Old_Ale%29.jpg" /></a>
+        A beer a day keeps the doctor away...
+    </h4>
+</div>

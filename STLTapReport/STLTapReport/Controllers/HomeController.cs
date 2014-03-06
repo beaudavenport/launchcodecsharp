@@ -46,6 +46,7 @@ namespace STLTapReport.Controllers
 
             // Populate scores with names and counts for first, second, and third place.
             scores.FirstBeer = SortedBeers.Last().name;
+            scores.FirstBeerPic = SortedBeers.Last().imageurl;
             scores.FirstBCount = SortedBeers.Last().users.Count();
             scores.SecondBeer = SortedBeers.ElementAt(SortedBeers.Count() - 2).name;
             scores.SecondBCount = SortedBeers.ElementAt(SortedBeers.Count() - 2).users.Count();
@@ -53,6 +54,8 @@ namespace STLTapReport.Controllers
             scores.ThirdBCount = SortedBeers.ElementAt(SortedBeers.Count() - 3).users.Count();
 
             scores.FirstStyle = SortedStyles.Last().name;
+            if (SortedStyles.Last().beers.Count() > 0) //check to see if example of style exists before setting image
+                scores.FirstStylePic = SortedStyles.Last().beers.First().imageurl;
             scores.FirstSCount = SortedStyles.Last().users.Count();
             scores.SecondStyle = SortedStyles.ElementAt(SortedStyles.Count() - 2).name;
             scores.SecondSCount = SortedStyles.ElementAt(SortedStyles.Count() - 2).users.Count();

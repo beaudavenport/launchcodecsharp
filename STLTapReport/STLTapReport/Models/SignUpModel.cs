@@ -11,14 +11,13 @@ namespace STLTapReport.Models
 {
     public class SignUpModel
     {
-        [Required]
+        [Required(ErrorMessage = "A user name is required.")]
         public string name { get; set; }
-        
-        [MyEmailAddress]
-        public string email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "A password is required.")]
         public string password { get; set; }
-   
+
+        [Required(ErrorMessage = "Prove you're human, please.")]
+        public string HumanVal { get; set; }
     }
 }

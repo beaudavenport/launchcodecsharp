@@ -4,27 +4,41 @@
     ViewBag.Title = "UserPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>My Account</h2>
-<h3>Your user name: @Model.name</h3>
-<h3>Your email: @Model.email</h3>
-<h3>Your favorite beers:</h3>
-@foreach (beer m in Model.beers)
-{
-    <h3>@m.name<span><a href="@Url.Action("RemoveUserItem", new { itemID = m.beerID, itemType = "beer" })">(remove)</a></span></h3>
-}
-
-<h3>Your favorite styles:</h3>
-@foreach (style x in Model.styles)
-{
-    <h3>@x.name<span><a href="@Url.Action("RemoveUserItem", new { itemID = x.styleID, itemType = "style" })">(remove)</a></span></h3>
-}
-@switch(Model.isAdmin)
-{
-    case (true): <h2>ADMIN</h2>;
-    <a href="@Url.Action("AdminWelcome", "Admin")">Administrator Controls</a>;
-    break;
-    case (false): <h2>NOT ADMIN</h2>;
-    break;
-}
-<h3>Now you can explore STL Tap Report and find beers and styles you like and where to get a pint!</h3>
+<div class="bodyHead">
+    <h1>@Model.name</h1>
+</div>
+<div class="bodyWrapper">
+    <div id="userPageBeers">
+        <h3 class="grayItal">Your favorite beers:</h3>
+        @foreach (beer m in Model.beers)
+        {
+            <div class="beerlist">
+                <h3>@m.name</h3>
+                <a href="@Url.Action("RemoveUserItem", new { itemID = m.beerID, itemType = "beer" })">(remove)</a>
+            </div>
+        }
+    </div>
+    <div id="userPageStyles">
+        <h3 class="grayItal">Your favorite styles:</h3>
+        @foreach (style x in Model.styles)
+        {
+            <div class="stylelist">
+                <h3>@x.name</h3>
+                <a href="@Url.Action("RemoveUserItem", new { itemID = x.styleID, itemType = "style" })">(remove)</a>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    @if (Model.isAdmin)
+    {
+        <h3 class="beerTitle"><a href="@Url.Action("AdminWelcome", "Admin")">Administrator Controls</a></h3>
+    }
+</div>
+<div class="viewFooter">
+    <h4>
+        <a title="By edwin [CC-BY-2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AFounders_Curmudgeon_(Old_Ale).jpg">
+            <img width="45" alt="Founders Curmudgeon (Old Ale)" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Founders_Curmudgeon_%28Old_Ale%29.jpg/256px-Founders_Curmudgeon_%28Old_Ale%29.jpg" /></a>
+        Before the use of hops in beer became widespread, anything from spices to dried fruit to narcotic herbs were used in brewing.
+    </h4>
+</div>

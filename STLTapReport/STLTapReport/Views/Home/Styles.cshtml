@@ -6,10 +6,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h2>Beer Styles</h2>
-<h3>Explore beer styles and pick up to 3 favorites!</h3>
-@foreach (style m in Model.styles)
-{
-    <div><a href="@Url.Action("StyleProfile", new { StyleProfileId = m.styleID })">@m.name</a></div>
-}
+<div class="bodyHead">
+    <h1>Styles</h1>
+</div>
+<div class="bodyWrapper">
+    <div class="introDiv">
+        <h4 class="grayItal">Welcome to the STL Tap Report style list. Click on a style to learn more.</h4>
+    </div>
+    <div id="stylePageView">
+        @foreach (style m in Model.styles)
+        {
+            <div class="stylelist">
+                <h3>@m.name</h3>
+                <h5>Country of Origin: @m.origin </h5><a class="linkSpan" href="@Url.Action("StyleProfile", new { StyleProfileId = m.styleID })">[visit profile page]</a>
+            </div>
+        }
+    </div>
+</div>
+<div class="viewFooter">
+    <h4>
+        <a title="By edwin [CC-BY-2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AFounders_Curmudgeon_(Old_Ale).jpg">
+            <img width="45" alt="Founders Curmudgeon (Old Ale)" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Founders_Curmudgeon_%28Old_Ale%29.jpg/256px-Founders_Curmudgeon_%28Old_Ale%29.jpg" />
+        </a>
+        Ale and Lager are brewed with different types of yeast, which prefer different conditions and produce distinctly different beers.
+    </h4>
+</div>

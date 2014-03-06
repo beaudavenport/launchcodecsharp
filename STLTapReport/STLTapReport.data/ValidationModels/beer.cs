@@ -15,13 +15,13 @@ namespace STLTapReport.data
     }
     public class beerMetaData
     {
-        [Required]
+        [Required(ErrorMessage="A beer name is required.")]
         public string name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="A description is required.")]
         public string description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="An ABV value is required in FLOAT format (e.g., 4.5).")]
         public double abv { get; set; }
 
     }

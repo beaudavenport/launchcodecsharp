@@ -26,23 +26,14 @@
                 <div id="login">
                     @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
                     {
-                        <div class="loginImg">
-                            <img height="50px" width="25px" src="http://openclipart.org/image/300px/svg_to_png/181588/Fwd:%20Pint%20of%20Beer%20for%20Beijing%20Cream.png" />
-                        </div>
                         <div class="loginName">
-                            <h4>
-                                Welcome back, @Session["name"]!<br />
-                                <a href="@Url.Action("Login", "Account")">[logout]</a>
-                            </h4>
+                            <h4>Welcome back, @Session["name"]!<br /><a href="@Url.Action("Login", "Account")">[logout]</a></h4>
                         </div>
                     }
                     else
                     {
-                        <div class="loginImg">
-                            <img height="50px" width="25px" src="http://openclipart.org/image/300px/svg_to_png/181588/Fwd:%20Pint%20of%20Beer%20for%20Beijing%20Cream.png" />
-                         </div>
-                        <div class="loginName">
-                            <h2><a href="@Url.Action("Login", "Account")">LOGIN</a></h2>
+                        <div class="loginName">     
+                            <h2><a href="@Url.Action("Login", "Account")">Login</a></h2>
                         </div>
                     }
                 </div>
@@ -50,21 +41,21 @@
             <div class="navLink" id="welcomeLink">
                 @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
                 {
-                    <h3><a href="@Url.Action("UserPage", "Account")">My Account</a></h3>
+                    <h3><a href="@Url.Action("UserPage", "Account")">MY ACCOUNT</a></h3>
                 }
                 else
                 {
-                    <h3><a href="@Url.Action("Welcome", "Home")">Welcome</a></h3>
+                    <h3><a href="@Url.Action("Welcome", "Home")">WELCOME</a></h3>
                 }
             </div>
-            <div class="navLink" id="beerLink">
-                <h3><a href="@Url.Action("Beers", "Home")">Beers</a></h3>
+            <div class="navLink">
+                <h3><a href="@Url.Action("Beers", "Home")">BEERS</a></h3>
             </div>
-            <div class="navLink" id="styleLink">
-                <h3><a href="@Url.Action("Styles", "Home")">Styles</a></h3>
+            <div class="navLink">
+                <h3><a href="@Url.Action("Styles", "Home")">STYLES</a></h3>
             </div>
-            <div class="navLink" id="scoreLink">
-                <h3><a href="@Url.Action("Scoreboard", "Home")">Scoreboard</a></h3>
+            <div class="navLink">
+                <h3><a href="@Url.Action("Scoreboard", "Home")">SCOREBOARD</a></h3>
             </div>
             <div id="beerSpotlight">
                 <div id="beerSpotlightHead">
