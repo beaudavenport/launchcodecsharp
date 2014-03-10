@@ -11,10 +11,10 @@ namespace STLTapReport.Models
 {
     public class SignUpModel
     {
-        [Required(ErrorMessage = "A user name is required.")]
+        [StringLength(20), Required(ErrorMessage = "A user name is required and must be 20 characters or less.")]
         public string name { get; set; }
 
-        [Required(ErrorMessage = "A password is required.")]
+        [StringLength(15), Required(ErrorMessage = "A password is required and must be 15 characters or less.")]
         public string password { get; set; }
 
         [Required(ErrorMessage = "Prove you're human, please.")]

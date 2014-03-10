@@ -9,6 +9,7 @@
     <h1>Login</h1>
 </div>
 <div class="bodyWrapper">
+    <div class="bufferDiv"></div>
     <div id="loginView">
         @using (Html.BeginForm("Login", "Account"))
         {
@@ -19,7 +20,7 @@
         }
     </div>
     <div id="loginMessage">
-        <h3 class="grayItal">Don't have an account? <a href="@Url.Action("SignUp", "Account")"><span>Sign up for free!</span></a></h3>
+        <h3 class="grayItal">Don't have an account? <a href="@Url.Action("SignUp", "Account")"><span class="linkSpan">Sign up for free!</span></a></h3>
     </div>
 </div>
 <div class="viewFooter">

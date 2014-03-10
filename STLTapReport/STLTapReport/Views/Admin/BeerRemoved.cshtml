@@ -3,7 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Beer Removed Successfully</h2>
-
-<a href="@Url.Action("RemoveBeer", "Admin")">Remove another beer</a><br />
-<a href="@Url.Action("AddBeer", "Admin")">Add a beer</a>
+<div class="bodyHead">
+    <h2>Beer Removed Successfully</h2>
+</div>
+<div class="signUpView">
+    <h3><a href="@Url.Action("RemoveBeer", "Admin")">Remove another beer</a></h3><br />
+    <h3><a href="@Url.Action("AddBeer", "Admin")">Add a beer</a></h3>
+</div>

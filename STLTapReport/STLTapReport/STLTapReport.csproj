@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AWSSDK">
+      <HintPath>..\packages\AWSSDK.2.0.10.0\lib\net35\AWSSDK.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
@@ -135,6 +138,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Images\1280px-Crystal_Malt_80L.jpg" />
+    <Content Include="Content\Images\Groene_bel_1908_afbeelding.jpg" />
     <Content Include="Content\Images\Local_Texture__Three_by_One_by_Beyond_Oddities.jpg" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Global.asax" />

@@ -10,6 +10,7 @@
     <h1>Sign Up</h1>
 </div>
 <div class="bodyWrapper">
+    <div class="bufferDiv"></div>
     <div class="signUpView">
         <h3>Sign up for an <em>STL Tap Report</em> account! No email required!</h3>
         <p>
@@ -20,9 +21,9 @@
         @using (Html.BeginForm("SignUp", "Account"))
         {
             <span class="validation">@Html.ValidationSummary()</span>
-            <span>Enter a user name: </span> @Html.TextBoxFor(m => m.name)<br /><br />
-            <span>Choose a password: </span> @Html.PasswordFor(m => m.password)<br /><br />
-            <span>Prove you're human (write "Yes, I'm human"): </span> @Html.TextBoxFor(m => m.HumanVal)<br /><br />
+            <span>Enter a user name (20 characters max): </span> @Html.TextBoxFor(m => m.name)<br /><br />
+            <span>Choose a password (15 characters max): </span> @Html.PasswordFor(m => m.password)<br /><br />
+            <span>Prove you're human (write <span class="grayItal">Yes, I'm human</span>): </span> @Html.TextBoxFor(m => m.HumanVal)<br /><br />
             <input type="submit" value="Sign Up" /><br />
         }
     </div>
@@ -32,6 +33,6 @@
         <a title="By edwin [CC-BY-2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AFounders_Curmudgeon_(Old_Ale).jpg">
             <img width="45" alt="Founders Curmudgeon (Old Ale)" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Founders_Curmudgeon_%28Old_Ale%29.jpg/256px-Founders_Curmudgeon_%28Old_Ale%29.jpg" />
         </a>
-        The oldest surviving beer recipe is part of a 3900 year old Babylonian poem honoring <em>Ninkasi</em>, patron goddess of brewing.
+        The oldest surviving beer recipe is part of a 3900 year old Babylonian poem honoring <strong>Ninkasi</strong>, patron goddess of brewing.
     </h4>
 </div>

@@ -26,7 +26,7 @@ namespace STLTapReport.Controllers
             {
                 return View(model);
             }
-            else if (model.HumanVal != "Yes, I'm human")
+            else if (model.HumanVal != "Yes, I'm human") // custom validation
             {
                 ModelState.AddModelError("", "You failed the human test. Please try again.");
                 return View(model);
@@ -34,6 +34,7 @@ namespace STLTapReport.Controllers
             else
             {
                 STLTapReportEntities context = new STLTapReportEntities();
+
                 //hash password before proceeding
                 model.password = model.password.GetHashCode().ToString();
 

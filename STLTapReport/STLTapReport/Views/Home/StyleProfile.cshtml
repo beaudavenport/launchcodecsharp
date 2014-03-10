@@ -19,12 +19,14 @@
             using (Html.BeginForm("StyleProfile", "Home"))
             {
                 @Html.HiddenFor(m => Model.styleID);
-            <input class="center" type="submit" value="Add to favorite styles" />
+                <div class="submitDiv">
+                    <input class="center" type="submit" value="Add to favorite styles" />
+                </div>
             }
         }
         else
         {
-            <a class="linkSpan" href="@Url.Action("SignUp", "Account")">Sign up </a><span class="grayItal">to start choosing your favorite styles!</span>
+            <h2><a class="linkSpan" href="@Url.Action("SignUp", "Account")">Sign up </a><span class="grayItal">to start choosing your favorite styles!</span></h2>
         }
     </div>
     <div id="styleProfileExample">

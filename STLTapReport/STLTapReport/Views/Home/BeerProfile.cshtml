@@ -23,11 +23,15 @@
 
         @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
         {
-            using (Html.BeginForm("BeerProfile", "Home"))
-            {
+            
+                using (Html.BeginForm("BeerProfile", "Home"))
+                {
                 @Html.HiddenFor(m => Model.beerID);
-            <input class="center" type="submit" value="Add to Favorites" />
-            }
+                <div class="submitDiv">
+                    <input type="submit" value="Add to Favorites" />
+                </div>
+                }
+
         }
         else
         {

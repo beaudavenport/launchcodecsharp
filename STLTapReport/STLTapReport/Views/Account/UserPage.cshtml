@@ -5,9 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="bodyHead">
-    <h1>@Model.name</h1>
+    <h1>My Account</h1>
 </div>
 <div class="bodyWrapper">
+    <div id="accountName">
+        <h2><span class="grayItal">User Name: </span>@Model.name</h2>
+    </div>
     <div id="userPageBeers">
         <h3 class="grayItal">Your favorite beers:</h3>
         @foreach (beer m in Model.beers)
