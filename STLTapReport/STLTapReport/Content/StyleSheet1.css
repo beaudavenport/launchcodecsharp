@@ -295,18 +295,27 @@ a.linkSpan:visited
     margin-left: 10px;
     font-style: italic;
 }
+.ProfileWrapper
+{
+    background-color: #483C32;
+    height: 450px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px;
+}
 #beerProfileImageWrapper
 {
     width: 40%;
-    height: 100%;
+    height: 400px;
     padding-top: 40px;
     padding-left: 10px;
     float: left;
+    background-color: #EEDC82;
+    text-align: center;
 }
 #beerProfileImage
 {
     color: #EEDC82;
-    text-align: center;
     width: 160px;
     display: block;
     margin: 0 auto;
@@ -319,22 +328,22 @@ a.linkSpan:visited
 }
 #beerProfileContent
 {
-    width: 55%;
-    height: 100%;
+    width: 45%;
+    height: 400px;
     float: right;
     padding-left: 15px;
     padding-right: 12px;
-    border-left: 3px solid black;
+    background-color: #EEDC82;
 }
 
 #styleProfileContent
 {
-    width: 55%;
-    height: 100%;
+    width: 45%;
+    height: 400px;
     float: left;
     padding-left: 12px;
     padding-right: 15px;
-    border-right: 3px solid black;
+    background-color: #EEDC82;
 }
 
 #styleProfileExample
@@ -343,9 +352,10 @@ a.linkSpan:visited
     padding-left: 8px;
     padding-right: 10px;
     width: 40%;
-    height: 100%;
+    height: 400px;
     float: right;
     text-align: center;
+    background-color: #EEDC82;
 }
 #styleProfileExample h4
 {
@@ -361,7 +371,7 @@ a.linkSpan:visited
 {
     color: #EEDC82;
     margin: 0 auto;
-    width: 160px;
+    width: 100px;
     background-color: #483C32;
     text-align: center;
     border: 2px solid #575757;

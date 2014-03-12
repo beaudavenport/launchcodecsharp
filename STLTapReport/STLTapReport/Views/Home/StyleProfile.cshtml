@@ -9,43 +9,45 @@
     <h1>Style Profile</h1>
 </div>
 <div class="bodyWrapper">
-    <div id="styleProfileContent">
-        <h2 class="styleTitle">@Model.name</h2>
-        <p>&#8594 @Model.description</p>
-        <h3><span class="grayItal">Country of Origin: </span>@Model.origin</h3>
+    <div class="ProfileWrapper">
+        <div id="styleProfileContent">
+            <h2 class="styleTitle">@Model.name</h2>
+            <p>&#8594 @Model.description</p>
+            <h3><span class="grayItal">Country of Origin: </span>@Model.origin</h3>
 
-        @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
-        {
-            using (Html.BeginForm("StyleProfile", "Home"))
+            @if (!(Session["logged_in"] == null) && ((bool)Session["logged_in"]))
             {
-                @Html.HiddenFor(m => Model.styleID);
+                using (Html.BeginForm("StyleProfile", "Home"))
+                {
+                    @Html.HiddenFor(m => Model.styleID);
                 <div class="submitDiv">
                     <input class="center" type="submit" value="Add to favorite styles" />
                 </div>
+                }
             }
-        }
-        else
-        {
-            <h2><a class="linkSpan" href="@Url.Action("SignUp", "Account")">Sign up </a><span class="grayItal">to start choosing your favorite styles!</span></h2>
-        }
-    </div>
-    <div id="styleProfileExample">
-        <h4>An example of @Model.name:</h4>
-        @if (Model.beers.Count > 0) /* make sure an example of the style exists */
-        {
-            <div id="styleProfileExampleImage">
-                <img src="@Model.beers.First().imageurl" alt="(No image available)" />
-            </div>
-            <h2 class="beerTitle">@Model.beers.First().name</h2> 
-            <h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = Model.beers.First().beerID })">[Visit Profile Page]</a></h3>
-        }
-        else
-        {
-            <div id="styleProfileExampleImage">
-                <p>(No image available)</p>
-            </div>
-            <h3>(No beers of this style have been added to the database...)</h3>
-        }
+            else
+            {
+                <h2><a class="linkSpan" href="@Url.Action("SignUp", "Account")">Sign up </a><span class="grayItal">to start choosing your favorite styles!</span></h2>
+            }
+        </div>
+        <div id="styleProfileExample">
+            <h4>An example of @Model.name:</h4>
+            @if (Model.beers.Count > 0) /* make sure an example of the style exists */
+            {
+                <div id="styleProfileExampleImage">
+                    <img src="@Model.beers.First().imageurl" alt="(No image available)" />
+                </div>
+                <h2 class="beerTitle">@Model.beers.First().name</h2>
+                <h3><a href="@Url.Action("BeerProfile", new { BeerProfileId = Model.beers.First().beerID })">[Visit Profile Page]</a></h3>
+            }
+            else
+            {
+                <div id="styleProfileExampleImage">
+                    <p>(No image available)</p>
+                </div>
+                <h3>(No beers of this style have been added to the database...)</h3>
+            }
+        </div>
     </div>
 </div>
 <div class="viewFooter">
